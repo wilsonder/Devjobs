@@ -10,7 +10,7 @@
         <div>
             <div class="flex flex-col md:flex-row gap-3 items-stretch  mt-5 md:mt-0">
                 <a class="bg-slate-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center"
-                    href="#">Candidatos</a>
+                    href="{{ route('candidatos.show', $vacante) }}"> {{ $vacante->candidatos->count() }} Candidatos</a>
                 <a class="bg-blue-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center"
                     href="{{ route('vacantes.edit', $vacante->id) }}">Editar</a>
                 <button class="bg-red-600 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center"

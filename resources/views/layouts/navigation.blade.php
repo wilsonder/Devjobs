@@ -30,6 +30,11 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @auth
+                @can('create', App\Models\Vacante::class)
+                <a class="mr-2 w-7 h-7 bg-indigo-600 hover:bg-indigo-800 rounded-full flex flex-col justify-center
+                items-center text-sm font-extrabold text-white" href="{{ route('notificaciones') }}">{{
+                    Auth::user()->unreadNotifications->count() }}</a>
+                @endcan
                 <x-dropdown>
                     <x-slot name="trigger">
                         <button
@@ -109,6 +114,16 @@
                 {{ __('Crear Vacante') }}
             </x-responsive-nav-link>
         </div>
+
+        @can('create', App\Models\Vacante::class)
+        <div class="flex gap-2 items-center p-3">
+            <a class="w-7 h-7 bg-indigo-600 hover:bg-indigo-800 rounded-full flex flex-col justify-center
+                items-center text-sm font-extrabold text-white" href="{{ route('notificaciones') }}">{{
+                Auth::user()->unreadNotifications->count() }}</a>
+            <p class="text-base font-medium text-gray-600">@choice('Notificación|Notificaciones',
+                auth()->user()->unreadNotifications->count())</p>
+        </div>
+        @endcan
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
